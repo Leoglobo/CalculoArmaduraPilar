@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <title>ARMADURA DE PILAR</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src="assets/img/70669.png" height=80 width=80 class="img-fluid" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="projeto.html">Dimensionamento de Pilares <span class="sr-only">(current)</span></a>
+            </li>
+ 
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid p-2">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#divDadosTrans">GEOMETRIA DO ELEMENTO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#divPropConcreto" >PROPRIEDADES CONCRETO E AÇO</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#divEsfSolicitante">ESFORÇOS SOLICITANTES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#divCalcFinal">CÁLCULO FINAL</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-12" id="divDadosTrans">
+                    <div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">hx (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptHX" value="20"></div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">d'x (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptDX" value="4"></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">Lex (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptLEX" value="280"></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">hy (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptHY" value="50"></div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">d'y (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptDY" value="4"></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-4"></div>
+                        <div class="col-1"><span class="float-right">Ley (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptLEY" value="280"></div>
+                        <div class="col-5"></div>
+                    </div>
+					
+					<div class="row">
+                        <div class="col-12" align="center">
+                            <img src="assets/img/Pilar.png" class="img-fluid" alt="">  
+                        </div>
+						
+					
+						<div class="col-4" align="center">
+                           
+							
+
+                        </div>
+						<div class="col-4" align="right">
+                            
+						
+                        </div>
+						
+                    </div>
+					</br> <br>
+					
+           
+					
+					
+                </div>
+                <div class="col-12" id="divPropConcreto" style="display: none;">
+                    <div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Fck (MPa)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptFck" value="20"></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Classe de Agressividade</span></div>
+                        <div class="col-2">
+                            <select id="selClassAgress" class="form-control" onchange="selsi(this)">
+							 <!-- <select id="#selClassAgress" class="form-control" onBlur="selsi(this)"> -->
+
+                                <!-- <option value="" selected></option> -->
+								<option value="1" selected>I</option>
+                                <option value="2">II</option>
+                                <option value="3">III</option>
+                                <option value="4">IV</option>
+								
+                            </select>
+                        </div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Cobrimento (cm)</span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="vlrCobrimento" value="2.5"></div>
+                        <div class="col-5"></div>
+                    </div>
+                   
+                    <div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">A/C Máximo</span></div>
+                        <div class="col-2"><span id="vlrACMAX"></span></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">dmax,agr </span></div>
+                        <div class="col-2">
+                            <select id="selDMAX" class="form-control">
+                              
+                                <option value="1.25">12,5mm</option>
+								<option value="1.9" selected>19mm</option>
+								<option value="2.5">25mm</option>
+                                <option value="3.8">38mm</option>
+                            </select>
+                        </div>
+						
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Fyk (kN/cm²)</span></div>
+                        <div class="col-2"><span>CA-50</span></div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">&gamma;c</span></div>
+                        <div class="col-2"><span>1,40</span></div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">&gamma;s</span></div>
+                        <div class="col-2"><span>1,15</span></div>
+                        <div class="col-5"></div>
+                    </div>
+                </div>
+                                <div class="col-12" id="divEsfSolicitante" style="display: none;">
+								</br>
+								<div class="row">
+                        <div class="col-12" align="center">
+                            <img src="assets/img/situcalc.png" class="img-fluid" alt=""> 
+					
+                        </div>
+						<div class="col-4" align="center">
+                           
+							
+
+                        </div>
+						<div class="col-4" align="right">
+                            
+						
+                        </div>
+						
+                    </div>
+								</br> <br>
+								<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Situação de Projeto</span></div>
+                        <div class="col-4">
+                            <select id="selsituac" class="form-control" onchange="esforco(this)">
+                                
+                                <option value="1" selected>Pilar biapoiado sem cargas transversais</option>
+                                <option value="2">Pilar biapoiado com cargas transversais significativas ao longo da altura</option>
+                                <option value="3">Pilar em balanço</option>
+                            </select>
+                        </div>
+                        <div class="col-5"></div>
+                    </div>
+<ins id="esforcineo"></ins>
+					
+                      </div>
+				
+                <div class="col-12" id="divCalcFinal" style="display: none;">
+<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Método de análise da Segunda Ordem Local</span></div>
+                        <div class="col-4">
+                            <select id="selsegord" class="form-control">
+                                                               <option value="1">Pilar-Padrão com Curvatura Aproximada</option>
+                                <option value="2">Pilar-Padrão com rigidez &kappa; aproximada</option>
+							
+                            </select>
+                        </div>
+                        <div class="col-5"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <button class="btn btn-success form-control" onclick="calcular()">Calcular v, ux, uy</button>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1"></div>
+								<div class="col-2">d'/hx = <span id="dhxtopo"></span></div>
+								<div class="col-2">d'/hy = <span id="dhytopo"></span></div>
+                                <div class="col-2">&nu; = <span id="vlrVtopo"></span></div>
+                                <div class="col-2">&micro;x,topo = <span id="vlrUXtopo"></span></div>
+                                <div class="col-2">&micro;y,topo = <span id="vlrUYtopo"></span></div>
+                                <div class="col-3"></div>
+                            </div>
+							<div class="row">
+                                <div class="col-1"></div>
+								<div class="col-2">d'/hx = <span id="dhxmeio"></span></div>
+								<div class="col-2">d'/hy = <span id="dhymeio"></span></div>
+                                <div class="col-2">&nu; = <span id="vlrVmeio"></span></div>
+                                <div class="col-2">&micro;x,meio = <span id="vlrUXmeio"></span></div>
+                                <div class="col-2">&micro;y,meio = <span id="vlrUYmeio"></span></div>
+                                <div class="col-3"></div>
+                            </div>
+							<div class="row">
+                                <div class="col-1"></div>
+								<div class="col-2">d'/hx = <span id="dhxbase"></span></div>
+								<div class="col-2">d'/hy = <span id="dhybase"></span></div>
+                                <div class="col-2">&nu; = <span id="vlrVbase"></span></div>
+                                <div class="col-2">&micro;x,base = <span id="vlrUXbase"></span></div>
+                                <div class="col-2">&micro;y,base = <span id="vlrUYbase"></span></div>
+                                <div class="col-3"></div>
+                            </div>
+                        </div>
+                    </div>
+					<br />
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <a href="assets/pdf/flexreta.pdf" target="_blank" class="btn btn-success form-control">Abrir Ábaco Flexão Composta Reta</a>
+ <br />Fonte: Venturini e Rodrigues - Dimensionamento de peças retangulares de concreto armado solicitadas à flexão reta (1987). Disponível em: http://www.set.eesc.usp.br/mdidatico/concreto/Textos/<br/>23%20Abacos%20flexao%20normal%20-%20Venturini%20-%20Walter.pdf -  Acesso em 06/01/2021                               
+							   </div>
+                                <div class="col-4"></div>
+                            </div>
+							<br />
+							<div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <a href="assets/pdf/flexobliq.pdf" target="_blank" class="btn btn-success form-control">Abrir Ábaco Flexão Composta Oblíqua</a>
+									<br />Fonte: Pinheiro, Baraldi e Porem - Ábacos para flexão oblíqua (2009). Disponível em http://www.set.eesc.usp.br/mdidatico/concreto/Textos/<br/>24%20Abacos%20flexao%20obliqua.pdf -  Acesso em 06/01/2021
+ <br /> <br/>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+							
+					
+							
+							
+                            <div class="row form-group">
+                                <div class="col-4"></div>
+                                <div class="col-4">Taxa Mecânica de Aço (&omega;): <input class="form-control" type="number" id="iptomega" value="0.5"></div>
+                                <div class="col-4"></div>
+                            </div>
+					
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+								<br />
+                                    <button class="btn btn-success form-control" onclick="calcaco()">Calcular área do aço</button>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+							<br /> 
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">Área do aço (cm²): <span id="vlrAreaAco"></span></div>
+                                <div class="col-4"></div>
+                            </div>
+							<br /> 
+							<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Diâmetro das Barras Longitudinais (mm)</span></div>
+                        <div class="col-2">
+                            <select id="seldialong" class="form-control" onchange="areaproj()"> 
+                                                               <option value="1">10,0</option>
+                                <option value="1.25">12,5</option>
+								<option value="1.6">16,0</option>
+								<option value="2.0">20,0</option>
+								<option value="2.5">25,0</option>
+								<option value="3.2">32,0</option>
+								<option value="4">40,0</option>
+                            </select>
+                        </div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-3"></div>
+                        <div class="col-2"><span class="float-right">Número total de Barras </span></div>
+                        <div class="col-2"><input class="form-control" type="number" id="iptnumbar" value="10" onchange="areaproj2()"></div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row form-group">
+                        <div class="col-2"></div>
+                        <div class="col-3"><span class="float-right">Área de aço de projeto (cm²)  =</span></div>
+                        <div class="col-2"><span id="vlrareaproj"></span></div>
+                        <div class="col-5"></div>
+                    </div>
+					<div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <button class="btn btn-success form-control" onclick="verifnorma()">Executar Verificações Normativas</button> 
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+							<br /> 
+                         <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <canvas canvas id="myCanvas"  width="500" height="200"  style="border:0px solid #d3d3d3;"> <!-- tamanho da tela que você quer-->
+Seu navegador não suporta canvas do HTML5.
+</canvas>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+							<br /> 
+							
+                               
+							 <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                   <button class="btn btn-success form-control" onclick="fpdfdownload();">Abrir Relatório PDF</button>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			</div>
+			</div>
+        </div>
+   
+
+</body>
+<script src="assets/js/jquery-3.3.1.min.js" ></script>
+<script src="assets/js/bootstrap.bundle.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/funcoes.js"></script>
+<script src = 'Comuns/pdfmake.min.js'></script>
+<script src = 'Comuns/vfs_fonts.js'></script>
+<script src='assets/js/jquery-3.3.1.min.js' ></script>
+</html>
